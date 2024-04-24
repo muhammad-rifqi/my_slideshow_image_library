@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SlideShow</title>
+</head>
+<body>
+	<div id="slideshow">
+	</div>
+	<button onclick="startSlide()">Start</button> 
+	<button onclick="stopSlide()">Stop</button>
+</body>
+<script>
+	window.addEventListener("load", changeImg);
+	let i = 0;
+	let x;
+	function changeImg() {
+		let images = ["https://malsup.github.io/images/p1.jpg", "https://malsup.github.io/images/p2.jpg", "https://malsup.github.io/images/p3.jpg", "https://malsup.github.io/images/p4.jpg"];	// Images Array
+		document.getElementById("slideshow").innerHTML = `<img src="${images[i]}" width="400" height="300" />`;
+		if (i < images.length - 1) {
+			i++;
+		} else {
+			i = 0;
+		}
+		x = setTimeout(changeImg, 1000);
+	}
+
+	function stopSlide(){
+		clearTimeout(x);
+	}
+
+	function startSlide(){
+		setTimeout(changeImg,1000);
+	}
+
+</script>
+</html>
